@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "siteAnalytics": {
+      "events": {
+        "$eventId": {
+          ".write": true,
+          ".read": "auth != null"
+        }
+      }
+    }
+  }
+}
