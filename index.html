@@ -1,49 +1,1539 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>يوسف شهاب | Admin Dashboard</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box}body{margin:0;background:#050507;color:#fff;font-family:Cairo,sans-serif;min-height:100vh}body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 10% 10%,#7c3aed33,transparent 28%),radial-gradient(circle at 90% 30%,#2563eb22,transparent 30%),#050507}.wrap{max-width:1100px;margin:auto;padding:25px 16px 50px}.top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:20px}.title h1{margin:0;font-size:28px}.title p{margin:3px 0;color:#999;font-size:12px}.btn{border:1px solid #ffffff1f;background:#ffffff0d;color:#fff;padding:10px 15px;border-radius:12px;font-family:inherit;cursor:pointer}.btn:hover{background:#ffffff18}.login{max-width:430px;margin:9vh auto;background:#ffffff0b;border:1px solid #ffffff17;border-radius:24px;padding:28px;box-shadow:0 25px 80px #0008;backdrop-filter:blur(15px)}.login h1{text-align:center;margin-top:0}.field{margin:13px 0}.field label{display:block;color:#aaa;font-size:12px;margin-bottom:6px}.field input{width:100%;padding:12px;border-radius:12px;border:1px solid #ffffff18;background:#0008;color:#fff;font-family:inherit;outline:none}.primary{width:100%;background:linear-gradient(135deg,#7c3aed,#2563eb);border:0}.error{color:#fca5a5;font-size:12px;margin-top:10px}.dashboard{display:none}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:#ffffff09;border:1px solid #ffffff14;border-radius:18px;padding:18px}.label{color:#999;font-size:11px}.value{font-size:28px;font-weight:900;margin-top:4px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}.panel{background:#ffffff08;border:1px solid #ffffff14;border-radius:18px;padding:18px;overflow:hidden}.panel h2{font-size:15px;margin:0 0 13px}.bar{height:9px;background:#ffffff0d;border-radius:99px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:linear-gradient(90deg,#7c3aed,#06b6d4);border-radius:99px}.row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #ffffff0b;font-size:12px}.row:last-child{border:0}.muted{color:#999}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px}th,td{text-align:right;padding:9px;border-bottom:1px solid #ffffff0d;white-space:nowrap}th{color:#aaa}.status{display:inline-block;padding:4px 8px;border-radius:99px;background:#22c55e1c;color:#86efac}.logout{color:#fca5a5;border-color:#ef444433}@media(max-width:800px){.cards{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}@media(max-width:430px){.cards{grid-template-columns:1fr 1fr}.value{font-size:23px}.title h1{font-size:23px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>لوحة تحكم يوسف شهاب</title>
+
+    <meta name="robots" content="noindex,nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Cairo, Arial, sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(124, 92, 255, 0.20),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(0, 200, 255, 0.14),
+                    transparent 32%
+                ),
+                #070812;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+
+            padding: 30px 0 50px;
+        }
+
+        .card {
+            background: rgba(18, 21, 37, 0.88);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.35);
+
+            backdrop-filter: blur(15px);
+        }
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        #loginBox {
+
+            width: min(430px, 100%);
+
+            margin:
+                8vh auto
+                0;
+
+            padding: 30px;
+        }
+
+        .login-title {
+
+            margin: 0 0 8px;
+
+            font-size: 28px;
+
+            font-weight: 800;
+        }
+
+        .subtitle {
+
+            color: #aeb5cc;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+        label {
+
+            display: block;
+
+            margin-top: 20px;
+
+            margin-bottom: 7px;
+
+            font-weight: 700;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border-radius: 13px;
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            outline: none;
+
+            background: #0c0f1c;
+
+            color: white;
+
+            font-family: inherit;
+
+            font-size: 15px;
+        }
+
+        input:focus {
+
+            border-color: #7c5cff;
+
+            box-shadow:
+                0 0 0 3px rgba(124,92,255,0.15);
+        }
+
+        .login-button {
+
+            width: 100%;
+
+            margin-top: 22px;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            cursor: pointer;
+
+            color: white;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c5cff,
+                    #00b8ff
+                );
+        }
+
+        .login-button:disabled {
+
+            opacity: 0.55;
+
+            cursor: not-allowed;
+        }
+
+        #message {
+
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .error {
+
+            display: block !important;
+
+            color: #ffb8c1;
+
+            background: rgba(255,60,90,0.10);
+
+            border:
+                1px solid
+                rgba(255,60,90,0.30);
+        }
+
+        .success {
+
+            display: block !important;
+
+            color: #9dffd0;
+
+            background: rgba(40,220,130,0.10);
+
+            border:
+                1px solid
+                rgba(40,220,130,0.30);
+        }
+
+        /* =========================
+           DASHBOARD
+        ========================= */
+
+        #dashboard {
+
+            display: none;
+        }
+
+        .topbar {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .topbar h1 {
+
+            margin: 0;
+
+            font-size: 26px;
+        }
+
+        .user-info {
+
+            margin-top: 5px;
+
+            color: #aeb5cc;
+
+            font-size: 13px;
+        }
+
+        .logout-button {
+
+            width: auto;
+
+            padding:
+                10px
+                16px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            color: white;
+
+            background: #252a3e;
+
+            font-family: inherit;
+
+            font-weight: 700;
+        }
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+        }
+
+        .stat {
+
+            padding: 20px;
+        }
+
+        .stat-title {
+
+            color: #aeb5cc;
+
+            font-size: 14px;
+        }
+
+        .stat-number {
+
+            display: block;
+
+            margin-top: 5px;
+
+            font-size: 31px;
+
+            font-weight: 800;
+        }
+
+        .section {
+
+            margin-top: 16px;
+
+            padding: 20px;
+        }
+
+        .section h2 {
+
+            margin-top: 0;
+
+            font-size: 19px;
+        }
+
+        .loading {
+
+            color: #aeb5cc;
+
+            padding: 10px 0;
+        }
+
+        .table-wrapper {
+
+            overflow-x: auto;
+        }
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+
+            padding: 11px 8px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            text-align: right;
+
+            font-size: 13px;
+
+            white-space: nowrap;
+        }
+
+        th {
+
+            color: #bfc5dc;
+        }
+
+        @media (max-width: 750px) {
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .topbar {
+
+                align-items:
+                    flex-start;
+            }
+
+            .topbar h1 {
+
+                font-size: 21px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .container {
+
+                width: 94%;
+            }
+
+            #loginBox {
+
+                padding: 22px;
+            }
+
+            .stat {
+
+                padding: 15px;
+            }
+
+            .stat-number {
+
+                font-size: 25px;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
-<div id="login" class="login">
-  <h1>🔐 لوحة الأدمن</h1><p style="text-align:center;color:#999;font-size:12px">يوسف شهاب — إحصائيات الموقع</p>
-  <div class="field"><label>البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" placeholder="admin@example.com"></div>
-  <div class="field"><label>كلمة المرور</label><input id="password" type="password" autocomplete="current-password" placeholder="••••••••"></div>
-  <button id="loginBtn" class="btn primary">تسجيل الدخول</button><div id="loginError" class="error"></div>
+
+<div class="container">
+
+    <!-- =========================
+         LOGIN
+    ========================= -->
+
+    <section id="loginBox" class="card">
+
+        <h1 class="login-title">
+            🔐 لوحة الأدمن
+        </h1>
+
+        <div class="subtitle">
+            تسجيل الدخول لإدارة إحصائيات موقع يوسف شهاب
+        </div>
+
+        <form id="loginForm">
+
+            <label for="email">
+                البريد الإلكتروني
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                autocomplete="username"
+                placeholder="admin@example.com"
+                required
+            >
+
+            <label for="password">
+                كلمة المرور
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="••••••••"
+                required
+            >
+
+            <button
+                id="loginButton"
+                class="login-button"
+                type="submit"
+            >
+                تسجيل الدخول
+            </button>
+
+        </form>
+
+        <div
+            id="message"
+            role="alert"
+        ></div>
+
+    </section>
+
+
+    <!-- =========================
+         DASHBOARD
+    ========================= -->
+
+    <section id="dashboard">
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>
+                    📊 لوحة تحكم يوسف شهاب
+                </h1>
+
+                <div
+                    id="userInfo"
+                    class="user-info"
+                ></div>
+
+            </div>
+
+            <button
+                id="logoutButton"
+                class="logout-button"
+            >
+                تسجيل الخروج
+            </button>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="card stat">
+
+                <div class="stat-title">
+                    👁️ الزيارات
+                </div>
+
+                <span
+                    id="visits"
+                    class="stat-number"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="card stat">
+
+                <div class="stat-title">
+                    🕒 الجلسات
+                </div>
+
+                <span
+                    id="sessions"
+                    class="stat-number"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="card stat">
+
+                <div class="stat-title">
+                    🔗 ضغطات الروابط
+                </div>
+
+                <span
+                    id="clicks"
+                    class="stat-number"
+                >
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="card stat">
+
+                <div class="stat-title">
+                    👤 زوار مميزون
+                </div>
+
+                <span
+                    id="uniqueVisitors"
+                    class="stat-number"
+                >
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOP LINKS -->
+
+        <div class="card section">
+
+            <h2>
+                🔗 أكثر الروابط ضغطًا
+            </h2>
+
+            <div
+                id="topLinks"
+                class="loading"
+            >
+                جاري تحميل البيانات...
+            </div>
+
+        </div>
+
+
+        <!-- RECENT EVENTS -->
+
+        <div class="card section">
+
+            <h2>
+                🕘 آخر النشاطات
+            </h2>
+
+            <div
+                id="recentEvents"
+                class="loading"
+            >
+                جاري تحميل البيانات...
+            </div>
+
+        </div>
+
+    </section>
+
 </div>
-<div id="dashboard" class="dashboard"><div class="wrap">
-  <div class="top"><div class="title"><h1>لوحة تحكم يوسف شهاب</h1><p>Firebase Realtime Analytics • rps-online-785fc</p></div><button id="logout" class="btn logout">تسجيل الخروج</button></div>
-  <div class="cards">
-    <div class="card"><div class="label">إجمالي الزيارات</div><div id="visits" class="value">0</div></div>
-    <div class="card"><div class="label">الجلسات</div><div id="sessions" class="value">0</div></div>
-    <div class="card"><div class="label">ضغطات الروابط</div><div id="clicks" class="value">0</div></div>
-    <div class="card"><div class="label">زوار مميزون</div><div id="unique" class="value">0</div></div>
-  </div>
-  <div class="grid">
-    <div class="panel"><h2>🔗 أكثر الروابط ضغطًا</h2><div id="links"></div></div>
-    <div class="panel"><h2>📱 الأجهزة</h2><div id="devices"></div></div>
-    <div class="panel"><h2>🌐 اللغات ومصدر الزيارة</h2><div id="meta"></div></div>
-    <div class="panel"><h2>🕘 آخر النشاطات</h2><div id="recent"></div></div>
-  </div>
-  <div class="panel" style="margin-top:15px"><h2>📊 سجل النشاط</h2><div class="table-wrap"><table><thead><tr><th>النوع</th><th>الرابط</th><th>الجهاز</th><th>اللغة</th><th>المصدر</th><th>الوقت</th></tr></thead><tbody id="events"></tbody></table></div></div>
-</div></div>
+
+
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {getDatabase,ref,onValue} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-const firebaseConfig={apiKey:"AIzaSyAUV_pAXMCjUVPVNUGnAGkbu9De39nEEU",authDomain:"rps-online-785fc.firebaseapp.com",databaseURL:"https://rps-online-785fc-default-rtdb.firebaseio.com",projectId:"rps-online-785fc",storageBucket:"rps-online-785fc.firebasestorage.app",messagingSenderId:"832559985038",appId:"1:832559985038:web:ebdc8da7c7f4c7a9ef34df",measurementId:"G-76XM3GND1Y"};
-const app=initializeApp(firebaseConfig),db=getDatabase(app),auth=getAuth(app);let stop=null;
-const $=id=>document.getElementById(id),fmt=n=>Number(n||0).toLocaleString('ar-EG'),time=t=>t?new Date(t).toLocaleString('ar-EG',{dateStyle:'short',timeStyle:'short'}):'-';
-$('loginBtn').onclick=async()=>{ $('loginError').textContent=''; try{await signInWithEmailAndPassword(auth,$('email').value.trim(),$('password').value)}catch(e){$('loginError').textContent='تعذر تسجيل الدخول: '+(e.code||'خطأ غير معروف')}};
-$('logout').onclick=()=>signOut(auth);
-onAuthStateChanged(auth,user=>{if(user){$('login').style.display='none';$('dashboard').style.display='block';start();}else{$('dashboard').style.display='none';$('login').style.display='block';if(stop)stop();}});
-function start(){const r=ref(db,'siteAnalytics/events');stop=onValue(r,snap=>render(snap.val()||{}),err=>{$('recent').innerHTML='<div class="error">لا يمكن قراءة الإحصائيات. راجع Firebase Security Rules.</div>';console.error(err)})}
-function render(data){const rows=Object.entries(data).map(([id,x])=>({id,...x})).sort((a,b)=>(b.time||0)-(a.time||0));const visits=rows.filter(x=>x.type==='visit'),sessions=rows.filter(x=>x.type==='session'),clicks=rows.filter(x=>x.type==='click');const uniq=new Set(rows.map(x=>x.visitorId).filter(Boolean));$('visits').textContent=fmt(visits.length);$('sessions').textContent=fmt(sessions.length);$('clicks').textContent=fmt(clicks.length);$('unique').textContent=fmt(uniq.size);\n const count=(arr,key)=>{const m={};arr.forEach(x=>{const k=x[key]||'غير معروف';m[k]=(m[k]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1])};\n const linkCount=count(clicks,'link');const max=linkCount[0]?.[1]||1;$('links').innerHTML=linkCount.slice(0,10).map(([k,v])=>`<div class="row"><span>${esc(k)}</span><b>${fmt(v)}</b></div><div class="bar"><i style="width:${Math.max(3,v/max*100)}%"></i></div>`).join('')||'<span class="muted">لا توجد ضغطات بعد</span>';\n const dev=count(rows,'device');$('devices').innerHTML=dev.map(([k,v])=>`<div class="row"><span>${esc(k)}</span><b>${fmt(v)}</b></div>`).join('')||'<span class="muted">لا توجد بيانات</span>';\n const langs=count(rows,'language').slice(0,5),refs=count(rows,'referrer').slice(0,5);$('meta').innerHTML=[...langs.map(([k,v])=>`<div class="row"><span>🌐 ${esc(k)}</span><b>${fmt(v)}</b></div>`),...refs.map(([k,v])=>`<div class="row"><span>↗️ ${esc(short(k,45))}</span><b>${fmt(v)}</b></div>`)].join('')||'<span class="muted">لا توجد بيانات</span>';\n $('recent').innerHTML=rows.slice(0,8).map(x=>`<div class="row"><span>${typeName(x.type)}</span><span class="muted">${time(x.time)}</span></div>`).join('')||'<span class="muted">لا توجد نشاطات</span>';\n $('events').innerHTML=rows.slice(0,100).map(x=>`<tr><td><span class="status">${typeName(x.type)}</span></td><td>${esc(short(x.link||'-',35))}</td><td>${esc(x.device||'-')}</td><td>${esc(x.language||'-')}</td><td>${esc(short(x.referrer||'-',30))}</td><td>${time(x.time)}</td></tr>`).join('');}
-function typeName(t){return t==='visit'?'زيارة':t==='session'?'جلسة':t==='click'?'ضغطة':t||'-'}function short(s,n){s=String(s);return s.length>n?s.slice(0,n-1)+'…':s}function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+
+/* =========================================================
+   FIREBASE IMPORTS
+========================================================= */
+
+import {
+    initializeApp
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+import {
+    getDatabase,
+    ref,
+    get
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyAUV_pAXmcUVPVNUGnAGkbu9De39nEEU",
+
+    authDomain:
+        "rps-online-785fc.firebaseapp.com",
+
+    databaseURL:
+        "https://rps-online-785fc-default-rtdb.firebaseio.com",
+
+    projectId:
+        "rps-online-785fc",
+
+    storageBucket:
+        "rps-online-785fc.firebasestorage.app",
+
+    messagingSenderId:
+        "832559985038",
+
+    appId:
+        "1:832559985038:web:ebdc8da7c7f4c7a9ef34df",
+
+    measurementId:
+        "G-76XM3GND1Y"
+
+};
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loginBox =
+    document.getElementById(
+        "loginBox"
+    );
+
+const dashboard =
+    document.getElementById(
+        "dashboard"
+    );
+
+const loginForm =
+    document.getElementById(
+        "loginForm"
+    );
+
+const emailInput =
+    document.getElementById(
+        "email"
+    );
+
+const passwordInput =
+    document.getElementById(
+        "password"
+    );
+
+const loginButton =
+    document.getElementById(
+        "loginButton"
+    );
+
+const messageBox =
+    document.getElementById(
+        "message"
+    );
+
+const logoutButton =
+    document.getElementById(
+        "logoutButton"
+    );
+
+
+/* =========================================================
+   FIREBASE START
+========================================================= */
+
+let app;
+let auth;
+let db;
+
+
+try {
+
+    app =
+        initializeApp(
+            firebaseConfig
+        );
+
+    auth =
+        getAuth(app);
+
+    db =
+        getDatabase(app);
+
+    console.log(
+        "Firebase initialized successfully."
+    );
+
+} catch (error) {
+
+    console.error(
+        "Firebase initialization error:",
+        error
+    );
+
+    showMessage(
+        "❌ حصل خطأ أثناء تشغيل Firebase. تأكد أنك تفتح الصفحة من رابط الموقع وليس file://.",
+        "error"
+    );
+
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+function showMessage(
+    text,
+    type = "error"
+) {
+
+    messageBox.textContent =
+        text;
+
+    messageBox.className =
+        type;
+}
+
+
+/* =========================================================
+   FIREBASE ERROR TRANSLATION
+========================================================= */
+
+function getFirebaseErrorMessage(
+    error
+) {
+
+    console.error(
+        "Firebase Auth Error:",
+        error
+    );
+
+    const code =
+        error?.code || "";
+
+
+    switch (code) {
+
+        case "auth/invalid-email":
+
+            return "❌ البريد الإلكتروني غير صحيح.";
+
+        case "auth/user-not-found":
+
+            return "❌ الحساب غير موجود في Firebase Authentication.";
+
+        case "auth/wrong-password":
+
+            return "❌ كلمة المرور غير صحيحة.";
+
+        case "auth/invalid-credential":
+
+            return "❌ البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
+        case "auth/operation-not-allowed":
+
+            return "❌ تسجيل الدخول Email/Password غير مفعّل في Firebase Authentication.";
+
+        case "auth/configuration-not-found":
+
+            return "❌ إعداد Firebase Authentication غير مكتمل.";
+
+        case "auth/too-many-requests":
+
+            return "⏳ تم إجراء محاولات كثيرة. حاول مرة أخرى بعد قليل.";
+
+        case "auth/network-request-failed":
+
+            return "🌐 حصلت مشكلة في الاتصال بالإنترنت.";
+
+        case "auth/missing-password":
+
+            return "❌ اكتب كلمة المرور.";
+
+        default:
+
+            return (
+                "❌ حصل خطأ: " +
+                (
+                    error?.message ||
+                    code ||
+                    "خطأ غير معروف"
+                )
+            );
+    }
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+loginForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        if (!auth) {
+
+            showMessage(
+                "❌ Firebase غير جاهز. افتح admin.html من رابط الموقع المستضاف.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        const email =
+            emailInput.value.trim();
+
+        const password =
+            passwordInput.value;
+
+
+        if (!email) {
+
+            showMessage(
+                "⚠️ اكتب البريد الإلكتروني.",
+                "error"
+            );
+
+            emailInput.focus();
+
+            return;
+        }
+
+
+        if (!password) {
+
+            showMessage(
+                "⚠️ اكتب كلمة المرور.",
+                "error"
+            );
+
+            passwordInput.focus();
+
+            return;
+        }
+
+
+        loginButton.disabled =
+            true;
+
+        loginButton.textContent =
+            "جاري تسجيل الدخول...";
+
+
+        messageBox.className =
+            "";
+
+        messageBox.textContent =
+            "";
+
+
+        try {
+
+            const result =
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+            console.log(
+                "Login successful:",
+                result.user.email
+            );
+
+
+            showMessage(
+                "✅ تم تسجيل الدخول بنجاح.",
+                "success"
+            );
+
+
+        } catch (error) {
+
+            showMessage(
+                getFirebaseErrorMessage(
+                    error
+                ),
+                "error"
+            );
+
+        } finally {
+
+            loginButton.disabled =
+                false;
+
+            loginButton.textContent =
+                "تسجيل الدخول";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   AUTH STATE
+========================================================= */
+
+onAuthStateChanged(
+    auth,
+    async function(user) {
+
+        if (user) {
+
+            console.log(
+                "Authenticated:",
+                user.email
+            );
+
+
+            loginBox.style.display =
+                "none";
+
+            dashboard.style.display =
+                "block";
+
+
+            document.getElementById(
+                "userInfo"
+            ).textContent =
+                "مسجل دخول: " +
+                (
+                    user.email ||
+                    ""
+                );
+
+
+            await loadAnalytics();
+
+        } else {
+
+            loginBox.style.display =
+                "block";
+
+            dashboard.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+logoutButton.addEventListener(
+    "click",
+    async function() {
+
+        try {
+
+            await signOut(auth);
+
+        } catch (error) {
+
+            console.error(
+                error
+            );
+
+            alert(
+                "❌ حصل خطأ أثناء تسجيل الخروج."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   LOAD ANALYTICS
+========================================================= */
+
+async function loadAnalytics() {
+
+    const eventsRef =
+        ref(
+            db,
+            "siteAnalytics/events"
+        );
+
+
+    try {
+
+        const snapshot =
+            await get(
+                eventsRef
+            );
+
+
+        if (!snapshot.exists()) {
+
+            document.getElementById(
+                "visits"
+            ).textContent =
+                "0";
+
+            document.getElementById(
+                "sessions"
+            ).textContent =
+                "0";
+
+            document.getElementById(
+                "clicks"
+            ).textContent =
+                "0";
+
+            document.getElementById(
+                "uniqueVisitors"
+            ).textContent =
+                "0";
+
+
+            document.getElementById(
+                "topLinks"
+            ).innerHTML =
+                "لا توجد بيانات حتى الآن.";
+
+
+            document.getElementById(
+                "recentEvents"
+            ).innerHTML =
+                "لا توجد بيانات حتى الآن.";
+
+
+            return;
+        }
+
+
+        const data =
+            snapshot.val();
+
+
+        const events =
+            Object.values(
+                data
+            ).filter(Boolean);
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        const visits =
+            events.filter(
+                event =>
+                    event.type === "visit"
+            ).length;
+
+
+        const sessions =
+            events.filter(
+                event =>
+                    event.type === "session"
+            ).length;
+
+
+        const clicks =
+            events.filter(
+                event =>
+                    event.type === "click"
+            ).length;
+
+
+        const uniqueVisitors =
+            new Set(
+                events
+                    .map(
+                        event =>
+                            event.visitorId
+                    )
+                    .filter(Boolean)
+            ).size;
+
+
+        document.getElementById(
+            "visits"
+        ).textContent =
+            visits;
+
+
+        document.getElementById(
+            "sessions"
+        ).textContent =
+            sessions;
+
+
+        document.getElementById(
+            "clicks"
+        ).textContent =
+            clicks;
+
+
+        document.getElementById(
+            "uniqueVisitors"
+        ).textContent =
+            uniqueVisitors;
+
+
+        /* =========================
+           TOP LINKS
+        ========================= */
+
+        const linkCounts = {};
+
+
+        events
+            .filter(
+                event =>
+                    event.type === "click"
+            )
+            .forEach(
+                event => {
+
+                    const link =
+                        event.link ||
+                        event.url ||
+                        "غير معروف";
+
+
+                    linkCounts[link] =
+                        (
+                            linkCounts[link] ||
+                            0
+                        ) + 1;
+
+                }
+            );
+
+
+        const sortedLinks =
+            Object.entries(
+                linkCounts
+            )
+            .sort(
+                (a,b) =>
+                    b[1] - a[1]
+            );
+
+
+        if (
+            sortedLinks.length ===
+            0
+        ) {
+
+            document.getElementById(
+                "topLinks"
+            ).innerHTML =
+                "لا توجد ضغطات على الروابط حتى الآن.";
+
+        } else {
+
+            document.getElementById(
+                "topLinks"
+            ).innerHTML = `
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    الرابط
+                                </th>
+
+                                <th>
+                                    الضغطات
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            ${
+                                sortedLinks
+                                    .slice(0,15)
+                                    .map(
+                                        ([link,count]) => `
+
+                                        <tr>
+
+                                            <td>
+                                                ${escapeHTML(link)}
+                                            </td>
+
+                                            <td>
+                                                ${count}
+                                            </td>
+
+                                        </tr>
+
+                                    `
+                                    )
+                                    .join("")
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            `;
+
+        }
+
+
+        /* =========================
+           RECENT EVENTS
+        ========================= */
+
+        const recentEvents =
+            events
+                .sort(
+                    (a,b) =>
+                        Number(
+                            b.time || 0
+                        ) -
+                        Number(
+                            a.time || 0
+                        )
+                )
+                .slice(
+                    0,
+                    100
+                );
+
+
+        if (
+            recentEvents.length ===
+            0
+        ) {
+
+            document.getElementById(
+                "recentEvents"
+            ).innerHTML =
+                "لا توجد أحداث.";
+
+            return;
+        }
+
+
+        document.getElementById(
+            "recentEvents"
+        ).innerHTML = `
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                الوقت
+                            </th>
+
+                            <th>
+                                النوع
+                            </th>
+
+                            <th>
+                                الجهاز
+                            </th>
+
+                            <th>
+                                اللغة
+                            </th>
+
+                            <th>
+                                الرابط
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${
+                            recentEvents
+                                .map(
+                                    event => `
+
+                                    <tr>
+
+                                        <td>
+                                            ${formatDate(event.time)}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHTML(
+                                                event.type ||
+                                                "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHTML(
+                                                event.device ||
+                                                "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHTML(
+                                                event.language ||
+                                                "-"
+                                            )}
+                                        </td>
+
+                                        <td>
+                                            ${escapeHTML(
+                                                event.link ||
+                                                event.url ||
+                                                "-"
+                                            )}
+                                        </td>
+
+                                    </tr>
+
+                                `
+                                )
+                                .join("")
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        `;
+
+
+    } catch (error) {
+
+        console.error(
+            "Analytics error:",
+            error
+        );
+
+
+        if (
+            error.code ===
+            "PERMISSION_DENIED"
+        ) {
+
+            document.getElementById(
+                "recentEvents"
+            ).innerHTML = `
+
+                <div class="error">
+
+                    ❌ تسجيل الدخول نجح،
+                    لكن Firebase رفض قراءة الإحصائيات.
+
+                    <br><br>
+
+                    راجع قواعد Realtime Database
+                    لمسار:
+
+                    <b>
+                        siteAnalytics/events
+                    </b>
+
+                </div>
+            `;
+
+        } else {
+
+            document.getElementById(
+                "recentEvents"
+            ).innerHTML = `
+
+                <div class="error">
+
+                    ❌ تعذر تحميل الإحصائيات.
+
+                    <br><br>
+
+                    ${escapeHTML(
+                        error.message ||
+                        "خطأ غير معروف"
+                    )}
+
+                </div>
+            `;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   FORMAT DATE
+========================================================= */
+
+function formatDate(
+    timestamp
+) {
+
+    if (!timestamp) {
+
+        return "-";
+
+    }
+
+
+    try {
+
+        return new Date(
+            Number(timestamp)
+        ).toLocaleString(
+            "ar-EG"
+        );
+
+    } catch {
+
+        return "-";
+
+    }
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(
+    value
+) {
+
+    return String(
+        value ?? ""
+    )
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
+    .replaceAll(
+        "'",
+        "&#039;"
+    );
+
+}
+
 </script>
-</body></html>
+
+</body>
+</html>
